@@ -1,0 +1,78 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.AppLight {
+  text-align: center;
+  background-color: #FFF;
+}
+
+.AppDark{
+  text-align: center;
+  background-color: #2B2D2F;
+}
+
+#ThemeSwitch{
+  font-size: larger;
+  position: fixed;
+  bottom: 5%;
+  min-width: 20%;
+}
+
+.SwapButton{
+  background-color: #FFFFFFBB;
+  border: none;
+}
+
+
+.GoButton{
+  background-color: #0052df;
+  border: none;
+  min-width: 20%;
+  height: 40px;
+  float: right;
+  clear: left;
+  margin-bottom: 10%;
+  margin-left: 100%;
+}
+
+.midButtons{
+  float: left;
+  clear: left;
+  border: none;
+  min-width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: larger;
+  vertical-align:  middle;
+}
+
+
+.Switch{
+  vertical-align: middle;
+}
+
+.inputArea, .buttonHolder, .midButtons{
+  margin: 8px;
+}
+
+.SidePanel{
+  float: left;
+  background-color: #cc0000;
+  min-width: 20%;
+  height: 100vh;
+  border-right: 5px solid white;
+}
+
+.map{
+  float: left;
+  position:fixed;
+  left: 20%;
+  top: 0px;
+  max-height: 100%;
+  max-width: 100%;
+}

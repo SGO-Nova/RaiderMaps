@@ -1,0 +1,3 @@
+{
+    "Buildings": [["Holden", {"Floors": 3}, {"Rooms" : [1,2,3]}],["Math", {"floors": 3}, {"Rooms" : [2,3,4]}],["Lot Z1", {"Floors": 0}, {"Rooms" : []}]]
+}
