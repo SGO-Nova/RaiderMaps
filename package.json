@@ -1,5 +1,5 @@
 {
-  "homepage":"http://SGO-Nova.github.io/RaiderMaps",
+  "homepage": "https://sgo-nova.github.io/RaiderMaps/",
   "name": "raidermaps",
   "version": "0.1.0",
   "private": true,
@@ -17,7 +17,8 @@
     "react-scripts": "4.0.1",
     "react-switch": "^6.0.0",
     "react-zoom-pan-pinch": "^1.6.1",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "predeploy": "npm run build",
