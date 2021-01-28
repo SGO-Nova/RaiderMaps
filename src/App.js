@@ -144,7 +144,7 @@ function App(){
         
         {/*Theme switching slider*/}
         <div id="ThemeSwitch" >
-          <span>
+          <span style={{marginRight:"5%"}}>
             Theme: 
           </span> 
           <ThemeSwitch/>

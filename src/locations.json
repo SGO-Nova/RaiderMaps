@@ -1,3 +1,247 @@
 {
-    "Buildings": [["Holden", {"Floors": 3}, {"Rooms" : [1,2,3]}],["Math", {"floors": 3}, {"Rooms" : [2,3,4]}],["Lot Z1", {"Floors": 0}, {"Rooms" : []}]]
+    "Buildings": [
+        [
+            "Biology",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Biology Auditorium",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Chemistry",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Civil Engineering",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Computer Science",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Electrical Engineering",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Engineering Center",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Engineering and Technology Lab",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "English",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Holden",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Human Sciences",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Industrial, System, and Manufacturing Engineering",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Library",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Math",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Mechanical Engineering",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Media & Communications",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Music",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Petroleum Engineering",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Science",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Student Union",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Lot Z1",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Lot Z2",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Lot Z3",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Lot Z4",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Lot Z5",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Lot Z6",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ],
+        [
+            "Lot Z7",
+            {
+                "Floors": null
+            },
+            {
+                "Rooms": []
+            }
+        ]
+    ]
 }
