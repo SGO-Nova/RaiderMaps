@@ -20,6 +20,7 @@ import football from "./Icons/football.svg";
 import library from "./Icons/library.svg";
 import rec from "./Icons/rec.svg";
 import sub from "./Icons/sub.svg";
+import demo from "./Icons/demo.svg";
 
 
 
@@ -32,11 +33,15 @@ class ThemeSwitch extends Component {
   }
   handleChange(checked) { //What will happen on state change
     this.setState({ checked });
+    var sidePanel = document.getElementById("SidePanel");
+    console.log(sidePanel);
     if(checked){
       document.body.style = 'background: #2B2D2F';
+      sidePanel.className = "SidePanelDark"
     }
     else{
       document.body.style = 'background: #FFFFFF';
+      sidePanel.className = "SidePanel"
     }
   }
   render() { //What the slider will look like
@@ -170,7 +175,7 @@ class mapArea extends Component{
             <React.Fragment>
               <TransformComponent>
                 <div className="Container">
-                  <img src={TTUMap} alt="TTU Map" className="mapImage"/>
+                  <img src={demo} alt="TTU Map" className="mapImage"/> {/*REPLACE demo with TTUMap for final product*/}
                 </div>
               </TransformComponent>
 
@@ -214,7 +219,7 @@ function App(){
 
   return (
     <body>
-      <div className="SidePanel" style={{float:"left",}}>
+      <div className="SidePanel" id="SidePanel">
         <h1 style={{marginBottom:"64px"}}>Raider Maps</h1> {/*Heading*/}
         
         {/*From TextField*/}
@@ -249,15 +254,16 @@ function App(){
         
         {/*Extra location buttons for bigger monitors*/}
         <div className="extraButtonsContainer">
+          <h2 style={{margin: "8px"}}>Extra Locations</h2>
           <div className="extraButtonsLeft">
-              <button className="extraButtons"><img src={library}/> Library</button>
-              <button className="extraButtons"><img src={sub}/> The SUB</button>
-              <button className="extraButtons"><img src={rec}/>The Rec</button>
+              <button className="extraButtons"><img style={{verticalAlign:"middle",}} src={library}/>Library</button>
+              <button className="extraButtons"><img style={{verticalAlign:"middle",}} src={sub}/> The SUB</button>
+              <button className="extraButtons"><img style={{verticalAlign:"middle",}}src={rec}/>The Rec</button>
           </div>
           <div className="extraButtonsRight">
-            <button className="extraButtons"><img src={basketball}/>US Arena</button>
-            <button className="extraButtons"><img src={football}/>Jones AT&T Stadium</button>
-            <button className="extraButtons"><img src={football}/> filler</button>
+            <button className="extraButtons"><img style={{verticalAlign:"middle",}}src={basketball}/>US Arena</button>
+            <button className="extraButtons"><img style={{verticalAlign:"middle",}}src={football}/>Jones AT&T Stadium</button>
+            <button className="extraButtons"><img style={{verticalAlign:"middle",}}src={football}/> filler</button>
           </div>
         </div>
 
