@@ -99,7 +99,7 @@ html, .body{
 }
 
 @media screen and (min-height: 1080px){
-  .extraButtonsContainer,{
+  .extraButtonsContainer{
     visibility: visible;
   }
 }
