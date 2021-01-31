@@ -1,11 +1,3 @@
-html, body{
-  margin: 0;
-  padding: 0;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
 .AppLight {
   text-align: center;
   background-color: #FFF;
@@ -16,11 +8,21 @@ html, body{
   background-color: #2B2D2F;
 }
 
+html, .body{
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: calc(10px + (20 - 10) * ((100vw - 300px) / (3840 - 300)));
+}
+
+
 #ThemeSwitch{
-  font-size: larger;
   position: fixed;
   bottom: 5%;
-  min-width: 20%;
+  width: 20%;
+  min-width: 250px;
 }
 
 .SwapButton{
@@ -47,7 +49,6 @@ html, body{
   min-width: 40px;
   height: 40px;
   text-align: center;
-  font-size: larger;
   vertical-align:  middle;
 }
 
@@ -56,24 +57,93 @@ html, body{
   vertical-align: middle;
 }
 
-.inputArea, .buttonHolder, .midButtons{
+.buttonHolder{
+  margin: 8px;
+  min-height: 20%;
+}
+
+.inputArea, .midButtons{
+  margin: 8px;
+}
+
+.extraButtonsContainer{
+  border: 2px solid black;
+  min-height: 20%;
+  margin: auto;
+  width: 95%;
+  margin-top: 32px;
+}
+
+.extraButtonsLeft, .extraButtonsRight{
+  float: left;
+  width: 50%;
+  margin: auto;
+}
+
+.extraButtons{
+  float: left;
+  clear: left;
   margin: 8px;
 }
 
 .SidePanel{
   float: left;
   background-color: #cc0000;
-  min-width: 20%;
+  width: 20%;
+  min-width: 250px;
   height: 100vh;
   border-right: 5px solid white;
+  text-align: center;
 }
 
-.map{
-  float: left;
-  position:fixed;
-  left: 20%;
-  margin-left: 8px;
-  top: 0px;
-  max-height: 100%;
-  max-width: 100%;
+.mapButtonsContainer{
+  position: fixed;
+  float: right;
+  right: 10px;
+  bottom: 10px;
+}
+
+.mapButtons{
+  float: right;
+  clear: right;
+  width: 40px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 720px){
+  .mapImage{
+    object-fit: contain;
+    width: 80vw;
+    max-height: 100vh;
+  }
+  .map{
+    float: left;
+    position:fixed;
+    left: 20%;
+    margin-left: 8px;
+    top: 0px;
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* To later be fixed for phone ussage*/
+@media screen and (max-width: 719px){
+  .mapImage{
+    object-fit: cover;
+    max-width: calc(100vw - 250px);
+    max-height: 100vh;
+  }
+
+  .map{
+    float: right;
+    position:fixed;
+    right: 0;
+    margin-left: 8px;
+    top: 0px;
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
