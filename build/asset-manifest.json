@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/RaiderMaps/static/css/main.e7e6c017.chunk.css",
-    "main.js": "/RaiderMaps/static/js/main.f6533f17.chunk.js",
-    "main.js.map": "/RaiderMaps/static/js/main.f6533f17.chunk.js.map",
+    "main.css": "/RaiderMaps/static/css/main.768d66c1.chunk.css",
+    "main.js": "/RaiderMaps/static/js/main.7420e4ef.chunk.js",
+    "main.js.map": "/RaiderMaps/static/js/main.7420e4ef.chunk.js.map",
     "runtime-main.js": "/RaiderMaps/static/js/runtime-main.acb6550c.js",
     "runtime-main.js.map": "/RaiderMaps/static/js/runtime-main.acb6550c.js.map",
-    "static/js/2.be19821c.chunk.js": "/RaiderMaps/static/js/2.be19821c.chunk.js",
-    "static/js/2.be19821c.chunk.js.map": "/RaiderMaps/static/js/2.be19821c.chunk.js.map",
+    "static/js/2.e4df5670.chunk.js": "/RaiderMaps/static/js/2.e4df5670.chunk.js",
+    "static/js/2.e4df5670.chunk.js.map": "/RaiderMaps/static/js/2.e4df5670.chunk.js.map",
     "index.html": "/RaiderMaps/index.html",
-    "static/css/main.e7e6c017.chunk.css.map": "/RaiderMaps/static/css/main.e7e6c017.chunk.css.map",
-    "static/js/2.be19821c.chunk.js.LICENSE.txt": "/RaiderMaps/static/js/2.be19821c.chunk.js.LICENSE.txt",
+    "static/css/main.768d66c1.chunk.css.map": "/RaiderMaps/static/css/main.768d66c1.chunk.css.map",
+    "static/js/2.e4df5670.chunk.js.LICENSE.txt": "/RaiderMaps/static/js/2.e4df5670.chunk.js.LICENSE.txt",
     "static/media/Icon.d0a6ea1d.svg": "/RaiderMaps/static/media/Icon.d0a6ea1d.svg",
     "static/media/Reset.486fcbd0.svg": "/RaiderMaps/static/media/Reset.486fcbd0.svg",
     "static/media/ZoomIn.6608bc98.svg": "/RaiderMaps/static/media/ZoomIn.6608bc98.svg",
     "static/media/ZoomOut.55768d54.svg": "/RaiderMaps/static/media/ZoomOut.55768d54.svg",
+    "static/media/back.037e7aeb.svg": "/RaiderMaps/static/media/back.037e7aeb.svg",
     "static/media/basketball.e8110e9f.svg": "/RaiderMaps/static/media/basketball.e8110e9f.svg",
     "static/media/bathroom.06acaf55.svg": "/RaiderMaps/static/media/bathroom.06acaf55.svg",
     "static/media/demo.93949ba5.svg": "/RaiderMaps/static/media/demo.93949ba5.svg",
@@ -21,14 +22,16 @@
     "static/media/football.08e52d85.svg": "/RaiderMaps/static/media/football.08e52d85.svg",
     "static/media/go.9e77b85e.svg": "/RaiderMaps/static/media/go.9e77b85e.svg",
     "static/media/library.a100e5fd.svg": "/RaiderMaps/static/media/library.a100e5fd.svg",
+    "static/media/locate.a08eaf61.svg": "/RaiderMaps/static/media/locate.a08eaf61.svg",
     "static/media/rec.a71cb641.svg": "/RaiderMaps/static/media/rec.a71cb641.svg",
+    "static/media/settings.53c6aa61.svg": "/RaiderMaps/static/media/settings.53c6aa61.svg",
     "static/media/sub.20785a92.svg": "/RaiderMaps/static/media/sub.20785a92.svg",
     "static/media/swap.45aab458.svg": "/RaiderMaps/static/media/swap.45aab458.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.acb6550c.js",
-    "static/js/2.be19821c.chunk.js",
-    "static/css/main.e7e6c017.chunk.css",
-    "static/js/main.f6533f17.chunk.js"
+    "static/js/2.e4df5670.chunk.js",
+    "static/css/main.768d66c1.chunk.css",
+    "static/js/main.7420e4ef.chunk.js"
   ]
 }
