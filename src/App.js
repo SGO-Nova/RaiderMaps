@@ -21,8 +21,11 @@ import library from "./Icons/library.svg";
 import rec from "./Icons/rec.svg";
 import sub from "./Icons/sub.svg";
 import demo from "./Icons/demo.svg";
+import settings from "./Icons/settings.svg";
+import locate from "./Icons/locate.svg";
+import back from "./Icons/back.svg";
 
-
+const SET_WIDTH = 400;
 
 //Slider creation classes
 class ThemeSwitch extends Component {
@@ -33,15 +36,12 @@ class ThemeSwitch extends Component {
   }
   handleChange(checked) { //What will happen on state change
     this.setState({ checked });
-    var sidePanel = document.getElementById("SidePanel");
-    console.log(sidePanel);
+    var app = document.getElementById("App");
     if(checked){
-      document.body.style = 'background: #2B2D2F';
-      sidePanel.className = "SidePanelDark"
+      app.className = "AppDark";
     }
     else{
-      document.body.style = 'background: #FFFFFF';
-      sidePanel.className = "SidePanel"
+      app.className = "AppLight";
     }
   }
   render() { //What the slider will look like
@@ -126,6 +126,38 @@ class BathroomSwitch extends Component {
   }
 }
 
+class SidePanel extends Component{
+  constructor(height, width, div){
+    super();
+    this.height = height;
+    this.width = width;
+    this.div = div;
+    this.tab = {shown: false, side: null};
+  }
+
+  show(){
+    this.tab = {shown: true, side: this.tab.side};
+  }
+
+  hide(){
+    this.tab = {shown: false, side: this.tab.side};
+  }
+
+  side(side){
+    this.tab = {shown: this.tab.shown, side: side};
+  }
+
+    render(){
+      return(
+        <div className="sidePanel" style={{height: this.height, width:this.width}}>
+          {this.div}
+        </div>
+      )
+    }
+
+}
+
+//Hint mouse over for map buttons
 const HTMLTooltip = withStyles((theme) => ({
   tooltip: {
     backgroundColor: '#f5f5f9',
@@ -138,152 +170,124 @@ const HTMLTooltip = withStyles((theme) => ({
 
 const data = require('./locations.json');
 var Buildings = [];
-let Rooms = new Map();
 
 for(var i = 0; i < data.Buildings.length; i++){
   Buildings.push(data.Buildings[i][0]);
-  Rooms.set(data.Buildings[i][0], data.Buildings[i][2].Rooms);
 }
 
-//Get building from From building side
-function getInputTop(){
-  var current_building = document.getElementById("fromBuilding").value;
-  console.log(current_building);
-  document.getElementById("fromRoom").disabled = false;
-}
-
-//Get building from To building side
-function getInputBottom(){
-  var current_building = document.getElementById("toBuilding").value;
-  console.log(current_building);
-  document.getElementById("toRoom").disabled = false;
-}
-
-//Map render Class
-class mapArea extends Component{
-
-  render() {
-    return (
-      <TransformWrapper defaultScale={1} marginRight="0" style={{float: "right"}}>
-        {({
-            zoomIn,
-            zoomOut,
-            resetTransform,
-            options: { limitToBounds, transformEnabled, disabled },
-            ...rest
-          }) => (
-            <React.Fragment>
-              <TransformComponent>
-                <div className="Container">
-                  <img src={demo} alt="TTU Map" className="mapImage"/> {/*REPLACE demo with TTUMap for final product*/}
-                </div>
-              </TransformComponent>
-
-              {/*Map Buttons */}
-              <div className="mapButtonsContainer">
-                    <HTMLTooltip title="Zoom In" placement="left" TransitionComponent={Zoom}>
-                      <button
-                        onClick={zoomIn}
-                        className="mapButtons"
-                      >
-                        <img src={zoom_in} alt="" />
-                      </button>
-                    </HTMLTooltip>
-                    <HTMLTooltip title="Zoom Out" placement="left" TransitionComponent={Zoom}>
-                    <button
-                      onClick={zoomOut}
-                      className="mapButtons"
-                    >
-                      <img src={zoom_out} alt="" />
-                    </button>
-                    </HTMLTooltip>
-                    <HTMLTooltip title="Zoom Reset" placement="left" TransitionComponent={Zoom}>
-                    <button
-                      onClick={resetTransform}
-                      className="mapButtons"
-                    >
-                      <img src={zoom_reset} alt="" />
-                    </button>
-                    </HTMLTooltip>
-                  </div>
-            </React.Fragment>
-            )}
-      </TransformWrapper>
-    );
+function remove(input){
+  if(input == true){
+    document.getElementById("settingsTab").style.left = 0;
+    document.getElementById("settingsTab").classList.remove('horizTranslateInto');
   }
+  else{
+    document.getElementById("settingsTab").style.left = -350 + 'px';
+    document.getElementById("settingsTab").classList.remove('horizTranslateOut');
+  }
+  
 }
 
-const mapView = new mapArea();
+const side1 = new SidePanel(50, SET_WIDTH, 
+  <div className="sidePanelInside">
+    <HTMLTooltip title="Settings" placement="bottom" TransitionComponent={Zoom}>
+      <button className="searchButton1" onClick={() => {
+        document.getElementById("settingsTab").classList.add('horizTranslateInto');
+        setTimeout(() => {
+          remove(true)}, 1500); 
+      }}>
+        <img src={settings} alt="Settings button"/>
+      </button>
+    </HTMLTooltip>
+    <TextField placeholder="Search a Location..." style={{width:"270px"}} InputProps={{ disableUnderline: true, style:{fontSize: 20}}} inputProps={{style:{padding: 0}}}/>
+    <HTMLTooltip title="Locate" placement="bottom" TransitionComponent={Zoom}>
+      <button className="searchButton2">
+        <img src={locate} alt="Locate location button"/>
+      </button>
+    </HTMLTooltip>
+  </div>
+);
+
+const side2 = new SidePanel(150, SET_WIDTH,
+  <div>
+    Common locations and extras tab that can be hidden away
+  </div>
+);
 
 function App(){
 
   return (
     <body>
-      <div className="SidePanel" id="SidePanel">
-        <h1 style={{marginBottom:"64px"}}>Raider Maps</h1> {/*Heading*/}
         
-        {/*From TextField*/}
-        <p style={{textAlign:"left", marginLeft:"8px", fontSize: "larger", minHeight: "32px",}}>From: </p>
-        <div style={{minHeight:"5vh"}}> 
-          <Autocomplete id="fromBuilding" onChange={() => setTimeout(getInputTop, 500)}  options={Buildings}  renderInput={(params) => <TextField {...params} label="Building" variant="filled" style={{backgroundColor: "#FFFFFF", float: "left", maxWidth: "55%", marginLeft: "2.5%", marginRight: "auto", marginBottom: "32px", clear:"left",}}/>}/>
-          <Autocomplete id="fromRoom" disabled= {true} options={Buildings} renderInput={(params) => <TextField {...params}  label="Room" variant="filled" style={{backgroundColor: "#FFFFFF", float: "right", maxWidth: "40%", marginRight: "2.5%", marginBottom: "32px",}}/>}/>
-        </div>
-        
-        
-        {/*Swap 'From' and 'To' TextFields */}
-        <button className="SwapButton"><img src={swap} alt="Swap 'From' and 'To' Locations"/></button>
-        
-        {/*To TextField */}
-        <p style={{textAlign:"left", marginLeft:"8px", fontSize: "larger", minHeight: "32px",}}>To: </p>
-        <div style={{minHeight:"5vh"}}> 
-          <Autocomplete id="toBuilding" onChange={() => setTimeout(getInputBottom, 500)} options={Buildings} getOptionLabel={(option) => option} renderInput={(params) => <TextField {...params} label="Building" variant="filled" style={{backgroundColor: "#FFFFFF", maxWidth: "55%", float: "left",  marginLeft: "2.5%", marginBottom: "8px", }}/>}/>
-          <Autocomplete id="toRoom" disabled= {true} options={Buildings} renderInput={(params) => <TextField {...params}  label="Room" variant="filled" style={{backgroundColor: "#FFFFFF", maxWidth: "40%", float: "right", marginRight: "2.5%", marginBottom: "32px",}}/>}/>
-        </div>
-
-        {/*Navigate button to give the path from the 'From' TextField to the 'To' TextField */}
-        <div className="buttonHolder">
-          <button className="GoButton"><img src={go} alt="Calculate directions and start journey"/></button>
-
-          {/*Middle buttons below 'Navigate" Button */}
-          {/*Bathroom*/}
-          <button className="midButtons"><img style={{verticalAlign:"middle",}} src={bathroom} alt="Route to the closest Bathroom"/> Closest Bathroom</button>
-          
-          {/*Food*/}
-          <button className="midButtons"><img style={{verticalAlign:"middle",}} src={food} alt="Route to the closest food location"/> Closest Food Place</button>
-        </div>
-        
-        {/*Extra location buttons for bigger monitors*/}
-        <div className="extraButtonsContainer">
-          <h2 style={{margin: "8px"}}>Extra Locations</h2>
-          <div className="extraButtonsLeft">
-              <button className="extraButtons"><img style={{verticalAlign:"middle",}} src={library}/>Library</button>
-              <button className="extraButtons"><img style={{verticalAlign:"middle",}} src={sub}/> The SUB</button>
-              <button className="extraButtons"><img style={{verticalAlign:"middle",}}src={rec}/>The Rec</button>
-          </div>
-          <div className="extraButtonsRight">
-            <button className="extraButtons"><img style={{verticalAlign:"middle",}}src={basketball}/>US Arena</button>
-            <button className="extraButtons"><img style={{verticalAlign:"middle",}}src={football}/>Jones AT&T Stadium</button>
-            <button className="extraButtons"><img style={{verticalAlign:"middle",}}src={football}/> filler</button>
-          </div>
-        </div>
-
-        {/*Theme and bathroom switching slider*/}
-        <div id="ThemeSwitch">
-          <span style={{marginRight:"2%"}}>
-            Theme: 
-          </span> 
-          <ThemeSwitch/>
-          <span style={{marginRight:"2%", marginLeft:"4%"}}>
-            Bathroom: 
-          </span> 
-          <BathroomSwitch/>
-        </div>
-      </div>
-
-
       {/*Map*/}
       <div className="map">
-        {mapView.render()}
+        <TransformWrapper wheel={{step:"70"}}>
+          {({
+              zoomIn,
+              zoomOut,
+              resetTransform,
+              options: { limitToBounds, transformEnabled, disabled },
+              ...rest
+            }) => (
+              <React.Fragment>
+                <TransformComponent >
+                  <div className="Container" >
+                    <img src={demo} alt="TTU Map" className="mapImage" /> {/*REPLACE demo with TTUMap for final product*/}
+                  </div>
+                </TransformComponent>
+                
+                {/*Map Buttons */}
+                <div className="mapButtonsContainer">
+                      <HTMLTooltip title="Zoom In" placement="left" TransitionComponent={Zoom}>
+                        <button
+                          onClick={zoomIn}
+                          className="mapButtons"
+                        >
+                          <img src={zoom_in} alt="" />
+                        </button>
+                      </HTMLTooltip>
+                      <HTMLTooltip title="Zoom Out" placement="left" TransitionComponent={Zoom}>
+                      <button
+                        onClick={zoomOut}
+                        className="mapButtons"
+                      >
+                        <img src={zoom_out} alt="" />
+                      </button>
+                      </HTMLTooltip>
+                      <HTMLTooltip title="Zoom Reset" placement="left" TransitionComponent={Zoom}>
+                      <button
+                        onClick={resetTransform}
+                        className="mapButtons"
+                      >
+                        <img src={zoom_reset} alt="" />
+                      </button>
+                      </HTMLTooltip>
+                    </div>
+                    <div className="sidePanelContainer">
+                      {side1.render()}
+                      {side2.render()}
+                    </div>
+                    <div id="settingsTab">
+                      <div style={{marginBottom:"16px"}}>Settings</div>
+                      <div style={{position:"absolute", top: "8px", right: "8px"}}><button className="searchButton1" onClick={() => {
+                        document.getElementById("settingsTab").classList.add('horizTranslateOut');
+                        setTimeout(() => {
+                          remove(false)}, 1500); 
+                        }
+                      }><img src={back} alt="Minimize settings screen"/></button></div>
+                      <div className="settingsSwitches">
+                        <div className="settings">
+                          <p style={{marginRight:"10px"}}>Theme:</p>
+                          <ThemeSwitch/>
+                        </div> 
+                        <div className="settings">
+                          <p style={{marginRight:"8px"}}>Bathroom:</p>
+                          <BathroomSwitch/>
+                        </div>
+                      </div>
+                    </div>
+              </React.Fragment>
+              )}
+        </TransformWrapper>
       </div>
     </body>
   );
