@@ -7,6 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.AppLight {
+  text-align: center;
+  background: #FBFAF5;
+}
+
+.AppDark{
+  text-align: center;
+  background: #4a4c4d;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

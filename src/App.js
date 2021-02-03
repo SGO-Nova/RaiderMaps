@@ -14,7 +14,7 @@ import zoom_reset from './Icons/Reset.svg';
 import Zoom from '@material-ui/core/Zoom';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import TTUMap from "./Icons/Icon.svg";
+import TTUMap from "./Icons/Tech.svg";
 import basketball from "./Icons/basketball.svg";
 import football from "./Icons/football.svg";
 import library from "./Icons/library.svg";
@@ -220,7 +220,7 @@ function App(){
         
       {/*Map*/}
       <div className="map">
-        <TransformWrapper wheel={{step:"70"}}>
+        <TransformWrapper wheel={{step:"70"}} defaultScale={1.25}>
           {({
               zoomIn,
               zoomOut,
@@ -231,7 +231,7 @@ function App(){
               <React.Fragment>
                 <TransformComponent >
                   <div className="Container" >
-                    <img src={demo} alt="TTU Map" className="mapImage" /> {/*REPLACE demo with TTUMap for final product*/}
+                    <img src={TTUMap} alt="TTU Map" className="mapImage" /> {/*REPLACE demo with TTUMap for final product*/}
                   </div>
                 </TransformComponent>
                 
