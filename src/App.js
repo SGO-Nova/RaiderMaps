@@ -20,10 +20,12 @@ import football from "./Icons/football.svg";
 import library from "./Icons/library.svg";
 import rec from "./Icons/rec.svg";
 import sub from "./Icons/sub.svg";
-import demo from "./Icons/demo.svg";
 import settings from "./Icons/settings.svg";
 import locate from "./Icons/locate.svg";
 import back from "./Icons/back.svg";
+import down from "./Icons/downArrow.svg";
+import up from "./Icons/upArrow.svg";
+import right from "./Icons/rightArrow.svg";
 
 const SET_WIDTH = 400;
 
@@ -126,6 +128,7 @@ class BathroomSwitch extends Component {
   }
 }
 
+//Creation of the floating side panels
 class SidePanel extends Component{
   constructor(height, width, div){
     super();
@@ -133,6 +136,7 @@ class SidePanel extends Component{
     this.width = width;
     this.div = div;
     this.tab = {shown: false, side: null};
+    this.margin = true;
   }
 
   show(){
@@ -147,13 +151,48 @@ class SidePanel extends Component{
     this.tab = {shown: this.tab.shown, side: side};
   }
 
-    render(){
-      return(
-        <div className="sidePanel" style={{height: this.height, width:this.width}}>
-          {this.div}
-        </div>
-      )
-    }
+  setHeight(height){
+    this.height = height;
+  }
+
+  renderMargin(){
+    return(
+      <div className="sidePanel" style={{height: this.height, width:this.width}}>
+        {this.div}
+      </div>
+    )
+  }
+
+    
+  renderNoMargin(){
+    return(
+      <div className="sidePanel" style={{height: this.height, width:this.width, marginTop: 0, marginLeft: 0, marginRight: 0}}>
+        {this.div}
+      </div>
+    )
+  }
+
+
+}
+
+//creation of the tabs for the floating pide panels
+class tab extends Component{
+  constructor(direction, extend, colapse){
+    super();
+    this.img = <img id ="tab" src= {up}/>
+    this.state = direction;
+    this.min = colapse;
+    this.max = extend;
+  }
+
+  render(){
+    return(
+      <div className="tab">
+        <button className="searchButton1" style={{marginInline: "0"}} onClick={() => {}
+        }>{this.img}</button>
+      </div>
+    )
+  }
 
 }
 
@@ -187,6 +226,19 @@ function remove(input){
   
 }
 
+function remove2(input){
+  if(input == true){
+    document.getElementById("main1").style.height = 150 + 'px';
+    document.getElementById("main1").classList.remove('verticalExpand');
+  }
+  else{
+    document.getElementById("main1").style.height = 50 + 'px';
+    document.getElementById("main1").classList.remove('verticalColapse');
+  }
+}
+
+const arrow1 = new tab("up", 150, 50);
+
 const side1 = new SidePanel(50, SET_WIDTH, 
   <div className="sidePanelInside">
     <HTMLTooltip title="Settings" placement="bottom" TransitionComponent={Zoom}>
@@ -207,11 +259,23 @@ const side1 = new SidePanel(50, SET_WIDTH,
   </div>
 );
 
-const side2 = new SidePanel(150, SET_WIDTH,
-  <div>
-    Common locations and extras tab that can be hidden away
+const side2 = new SidePanel(250, SET_WIDTH,
+  <div id="main1">
+    {side1.renderNoMargin()}
+    <div className="commonPlacesContainer" style={{float: "left", margin: "10px", marginTop: "20px"}}>
+      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={sub}/></button>
+      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={rec}/></button>
+      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={library}/></button>
+    </div>
+    <div className="commonPlacesContainer" style={{float: "left", clear: "left", margin: "10px"}}>
+      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={football}/></button>
+      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={basketball}/></button>
+      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={sub}/></button>
+    </div>
   </div>
 );
+
+
 
 function App(){
 
@@ -263,8 +327,7 @@ function App(){
                       </HTMLTooltip>
                     </div>
                     <div className="sidePanelContainer">
-                      {side1.render()}
-                      {side2.render()}
+                      {side2.renderMargin()}
                     </div>
                     <div id="settingsTab">
                       <div style={{marginBottom:"16px"}}>Settings</div>
