@@ -17,6 +17,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import TTUMap from "./Icons/Tech.svg";
 import basketball from "./Icons/basketball.svg";
 import football from "./Icons/football.svg";
+import baseball from "./Icons/baseball.svg";
 import library from "./Icons/library.svg";
 import rec from "./Icons/rec.svg";
 import sub from "./Icons/sub.svg";
@@ -196,6 +197,30 @@ class tab extends Component{
 
 }
 
+//Common place button creation
+class common extends Component{
+  constructor(text, icon){
+    super();
+    this.text = text;
+    this.icon = icon;
+  }
+
+  setColor(color){
+    this.color = color;
+  }
+
+  render(){
+    return(
+      <div style={{width:"130px", position:"relative", float: "left", textAlign:"center", marginTop:"20px"}}>
+        <div>
+          <button className="commonButtons" style={{borderRadius:"25px",minWidth:"50px",minHeight:"50px", border: "none", outline: "none", textAlign: "center", cursor:"pointer"}}><img src={this.icon}/></button>
+        </div>
+        <div style={{width:"90%", margin: "auto", whiteSpace:"nowrap", textAlign:"center", marginTop:"5px", }}><strong>{this.text}</strong></div>
+      </div>
+    )
+  }
+}
+
 //Hint mouse over for map buttons
 const HTMLTooltip = withStyles((theme) => ({
   tooltip: {
@@ -256,6 +281,14 @@ window.addEventListener("resize", () => {
 });
 
 
+const common1 = new common("Student Union", sub);
+const common2 = new common("The Rec", rec);
+const common3 = new common("The Library", library);
+const common4 = new common("Jones AT&T", football);
+const common5 = new common("US Arena", basketball);
+const common6 = new common("Dan Law Field", baseball);
+
+
 const arrow1 = new tab("up", 150, 50);
 
 //Sidepanel that has settings button, search bar, and find button
@@ -294,16 +327,12 @@ const side1 = new SidePanel(50, SET_WIDTH,
 const side2 = new SidePanel(250, SET_WIDTH,
   <div id="main1">
     {side1.renderNoMargin()}
-    <div className="commonPlacesContainer" style={{float: "left", margin: "10px", marginTop: "20px"}}>
-      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={sub}/></button>
-      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={rec}/></button>
-      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={library}/></button>
-    </div>
-    <div className="commonPlacesContainer" style={{float: "left", clear: "left", margin: "10px"}}>
-      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={football}/></button>
-      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={basketball}/></button>
-      <button style={{height: "50px", width: "50px", borderRadius:"50px", marginInline:"38.3px", border: "none", backgroundColor: "black", outline: "none"}}><img src={sub}/></button>
-    </div>
+    {common1.render()}
+    {common2.render()}
+    {common3.render()}
+    {common4.render()}
+    {common5.render()}
+    {common6.render()}
   </div>
 );
 
@@ -341,7 +370,7 @@ function App(){
   }, []);
   
   return (
-    <body>
+    <body >
         
       {/*Map*/}
       <div className="map">
@@ -358,11 +387,9 @@ function App(){
                   <div className="Container" >
                     <img src={TTUMap} alt="TTU Map" className="mapImage"/> {/*REPLACE demo with TTUMap for final product*/}{/*Image size stays the same as 100vh and 100vw */}
                     <div id="dotHolder"  style={{position: "absolute", top: "0",}}>
-                      <div id="locationDot" style={{position: "absolute", height:"1mm", width:"1mm", backgroundColor:"red", top: "45%", left: "30%"}}>
-                        {/*Test div for location placing */}
-                      </div>
+                      {/*Test div for location placing */}
+                      {/*<div id="locationDot" style={{position: "absolute", height:"1mm", width:"1mm", backgroundColor:"red", top: "45%", left: "30%"}}></div>*/}
                     </div>
-                    
                   </div>
                 </TransformComponent>
                 
@@ -414,6 +441,7 @@ function App(){
                       <BathroomSwitch/>
                     </div>
                   </div>
+                  
                 </div>
               </React.Fragment>
               )}

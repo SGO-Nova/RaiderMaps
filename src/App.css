@@ -35,6 +35,14 @@ html, .body{
   top: 0;
 }
 
+.AppDark .commonButtons{
+  background-color: black;
+}
+
+.AppLight .commonButtons{
+  background-color: #CC0000;
+}
+
 .Container{
   max-width:fit-content;
 }
