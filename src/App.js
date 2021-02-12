@@ -27,6 +27,7 @@ import back from "./Icons/back.svg";
 import down from "./Icons/downArrow.svg";
 import up from "./Icons/upArrow.svg";
 import right from "./Icons/rightArrow.svg";
+import logo from "./Icons/Icon.svg"
 
 const SET_WIDTH = 400;
 
@@ -423,9 +424,16 @@ function App(){
                 <div className="sidePanelContainer">
                   {side2.renderMargin()}
                 </div>
+
+                {/*Settings side bar */}
                 <div id="settingsTab">
-                  <div style={{marginBottom:"16px"}}>Settings</div>
-                  <div style={{position:"absolute", top: "8px", right: "8px"}}><button className="searchButton1" onClick={() => {
+                  <div className="settingsTop" style={{top: "8px", marginBottom:"32px", position:"absolute"}}>
+                    <img src={logo} style={{height:"32px", float: "left"}}/>
+                    <p style={{fontSize:"28px", float: "left", margin:"0px", marginInline:"8px"}}>Raider Maps</p>
+                    <hr style={{float:"left",clear:"left", width:"280px", height:"2px", backgroundColor:"#D0D0D055"}}></hr>
+                  </div>
+                  <div style={{marginBottom:"16px", marginTop:"64px", fontSize:"24px"}}>Settings</div>
+                  <div style={{position:"absolute", top: "16px", right: "8px"}}><button className="searchButton1" onClick={() => {
                     document.getElementById("settingsTab").classList.add('horizTranslateOut');
                     setTimeout(() => {
                       remove(false)}, 1500); 
