@@ -7,6 +7,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Biology building"
             }
         ],
         [
@@ -16,6 +19,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Biology Auditorium building"
             }
         ],
         [
@@ -25,6 +31,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Chemistry building"
             }
         ],
         [
@@ -34,6 +43,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Civil Engineering building"
             }
         ],
         [
@@ -43,6 +55,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Computer Science building"
             }
         ],
         [
@@ -52,6 +67,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Electrical Eningeering building"
             }
         ],
         [
@@ -61,6 +79,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Engineering Center building"
             }
         ],
         [
@@ -70,6 +91,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Engineering and Technology Lab building"
             }
         ],
         [
@@ -79,6 +103,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the English building"
             }
         ],
         [
@@ -88,6 +115,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Holden building"
             }
         ],
         [
@@ -97,6 +127,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Human Science building"
             }
         ],
         [
@@ -106,6 +139,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the ISME building"
             }
         ],
         [
@@ -115,6 +151,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Library"
             }
         ],
         [
@@ -124,6 +163,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Math building"
             }
         ],
         [
@@ -133,6 +175,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Mechanical Engineering building"
             }
         ],
         [
@@ -142,6 +187,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Media & Communication building"
             }
         ],
         [
@@ -151,6 +199,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Music building"
             }
         ],
         [
@@ -160,6 +211,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Petroleum Engineering building"
             }
         ],
         [
@@ -169,6 +223,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Science building"
             }
         ],
         [
@@ -178,6 +235,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of the Student Union building"
             }
         ],
         [
@@ -187,6 +247,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of Lot Z1"
             }
         ],
         [
@@ -196,6 +259,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of Lot Z2"
             }
         ],
         [
@@ -205,6 +271,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of Lot Z3"
             }
         ],
         [
@@ -214,6 +283,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of Lot Z4"
             }
         ],
         [
@@ -223,6 +295,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of Lot Z5"
             }
         ],
         [
@@ -232,6 +307,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of Lot Z6"
             }
         ],
         [
@@ -241,6 +319,9 @@
             },
             {
                 "Rooms": []
+            },
+            {
+                "Description" : "This is a test description of Lot Z7"
             }
         ]
     ]

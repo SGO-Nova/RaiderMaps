@@ -28,6 +28,7 @@ import down from "./Icons/downArrow.svg";
 import up from "./Icons/upArrow.svg";
 import right from "./Icons/rightArrow.svg";
 import logo from "./Icons/Icon.svg"
+import x from "./Icons/x.svg";
 
 const SET_WIDTH = 400;
 
@@ -132,13 +133,14 @@ class BathroomSwitch extends Component {
 
 //Creation of the floating side panels
 class SidePanel extends Component{
-  constructor(height, width, div){
+  constructor(height, width, div, name){
     super();
     this.height = height;
     this.width = width;
     this.div = div;
     this.tab = {shown: false, side: null};
     this.margin = true;
+    this.name = name;
   }
 
   show(){
@@ -159,7 +161,7 @@ class SidePanel extends Component{
 
   renderMargin(){
     return(
-      <div className="sidePanel" style={{height: this.height, width:this.width}}>
+      <div className="sidePanel" id={this.name} style={{height: this.height, width:this.width}}>
         {this.div}
       </div>
     )
@@ -168,13 +170,15 @@ class SidePanel extends Component{
     
   renderNoMargin(){
     return(
-      <div className="sidePanel" style={{height: this.height, width:this.width, marginTop: 0, marginLeft: 0, marginRight: 0}}>
+      <div className="sidePanel" id={this.name} style={{height: this.height, width:this.width, marginTop: 0, marginLeft: 0, marginRight: 0}}>
         {this.div}
       </div>
     )
   }
 
-
+  remove(){
+    document.getElementById(this.name).remove();
+  }
 }
 
 //creation of the tabs for the floating pide panels
@@ -239,14 +243,14 @@ var Buildings = [];
 
 
 //function for settings tab; class adding for animations
-function remove(input){
+function remove(input, id){
   if(input === true){
-    document.getElementById("settingsTab").style.left = 0;
-    document.getElementById("settingsTab").classList.remove('horizTranslateInto');
+    document.getElementById(id).style.left = 0;
+    document.getElementById(id).classList.remove('horizTranslateInto');
   }
   else{
-    document.getElementById("settingsTab").style.left = -350 + 'px';
-    document.getElementById("settingsTab").classList.remove('horizTranslateOut');
+    document.getElementById(id).style.left = -350 + 'px';
+    document.getElementById(id).classList.remove('horizTranslateOut');
   }
   
 }
@@ -292,6 +296,9 @@ const common6 = new common("Dan Law Field", baseball);
 
 const arrow1 = new tab("up", 150, 50);
 
+var myRefs = {location1: "",
+              location2: ""};
+
 //Sidepanel that has settings button, search bar, and find button
 const side1 = new SidePanel(50, SET_WIDTH, 
   <div className="sidePanelInside">
@@ -300,7 +307,7 @@ const side1 = new SidePanel(50, SET_WIDTH,
         <button className="searchButton1" onClick={() => {
           document.getElementById("settingsTab").classList.add('horizTranslateInto');
           setTimeout(() => {
-            remove(true)}, 1500); 
+            remove(true, "settingsTab")}, 1500); 
         }}>
           <img src={settings} alt="Settings button"/>
         </button>
@@ -309,20 +316,46 @@ const side1 = new SidePanel(50, SET_WIDTH,
     
     {/*TextField for location finding */}
     <div style={{width: "270px", float: "left"}}>
-      <Autocomplete freeSolo  options={Buildings}  renderInput={(parms) => (<TextField {...parms} InputProps={{ ...parms.InputProps, disableUnderline: true, style:{fontSize: 20}}} inputProps={{...parms.inputProps, style:{margin:"-4px"}}} id="textLocator" placeholder="Search a Location..." />)} /> {/* style={{width:"270px"}}   */}
+      <Autocomplete freeSolo options={Buildings} renderInput={(parms) => (<TextField {...parms} InputProps={{ ...parms.InputProps, disableUnderline: true, style:{fontSize: 20}}} inputProps={{...parms.inputProps, style:{margin:"-4px"}}} inputRef={(c) => {myRefs.location1 = c}} placeholder="Search a Location..." />)} /> {/* style={{width:"270px"}}   */}
     </div>
     <div style={{float: "left"}}>
       <HTMLTooltip title="Locate" placement="bottom" TransitionComponent={Zoom}>
         <button className="searchButton2" onClick={() => {
-          
+          console.log(myRefs.location1.value);
+          for(var i = 0; i < data.Buildings.length; i++){
+            if(data.Buildings[i][0] == myRefs.location1.value){
+              console.log("Description: " + data.Buildings[i][3].Description);
+              document.getElementById("locationName").innerHTML = data.Buildings[i][0];
+              document.getElementById("locationFloors").innerHTML = data.Buildings[i][1].Floors;
+              document.getElementById("locationDescription").innerHTML = data.Buildings[i][3].Description;
+            }
+          }
+          if(myRefs.location1.value != ""){
+            document.getElementById("locationTab").classList.add('horizTranslateInto');
+            setTimeout(() => {remove(true, "locationTab")}, 1500);
+            document.getElementById("side").classList.add('horizTranslateOut');
+            setTimeout(() => {
+              remove(false, "side")}, 1500);     
+          }
         }}>
           <img src={locate} alt="Locate location button"/>
         </button>
       </HTMLTooltip>
     </div>
-  </div>
+  </div>, "small"
 );
 
+const side3 = new SidePanel(100, SET_WIDTH,
+  <div className="sidePanelInside" id="messageBox"> 
+    <button className="searchButton1" style={{float:"right"}} onClick={() => {
+      side3.remove();
+    }}><img src={x} alt="close button"/></button>
+    <div style={{margin:"8px", clear:"right"}}>
+      This is a demo of my website to replace the <a href="https://www.ttu.edu/map/" target="_blank">current TTU map.</a>
+    </div>
+  </div>,
+  "messageBox"
+)
 
 //Side Panel that holds side panel 1 and common places and locations buttons
 const side2 = new SidePanel(250, SET_WIDTH,
@@ -334,7 +367,8 @@ const side2 = new SidePanel(250, SET_WIDTH,
     {common4.render()}
     {common5.render()}
     {common6.render()}
-  </div>
+  </div>,
+  "big"
 );
 
 
@@ -421,8 +455,9 @@ function App(){
                   </button>
                   </HTMLTooltip>
                 </div>
-                <div className="sidePanelContainer">
+                <div className="sidePanelContainer" id="side">
                   {side2.renderMargin()}
+                  {side3.renderMargin()}
                 </div>
 
                 {/*Settings side bar */}
@@ -436,7 +471,7 @@ function App(){
                   <div style={{position:"absolute", top: "16px", right: "8px"}}><button className="searchButton1" onClick={() => {
                     document.getElementById("settingsTab").classList.add('horizTranslateOut');
                     setTimeout(() => {
-                      remove(false)}, 1500); 
+                      remove(false, "settingsTab")}, 1500); 
                     }
                   }><img src={back} alt="Minimize settings screen"/></button></div>
                   <div className="settingsSwitches">
@@ -449,7 +484,31 @@ function App(){
                       <BathroomSwitch/>
                     </div>
                   </div>
-                  
+                </div>
+
+                {/*Location tab to come out when search is pressed */}
+                <div id="locationTab">
+                  <div className="settingsTop" style={{top: "8px", marginBottom:"32px", position:"absolute"}}>
+                    <img src={logo} style={{height:"32px", float: "left"}}/>
+                    <p style={{fontSize:"28px", float: "left", margin:"0px", marginInline:"8px"}}>Raider Maps</p>
+                    <hr style={{float:"left",clear:"left", width:"280px", height:"2px", backgroundColor:"#D0D0D055"}}></hr>
+                  </div>
+                  <div style={{marginBottom:"16px", marginTop:"64px", fontSize:"24px"}}>Location</div>
+                  <div style={{position:"absolute", top: "16px", right: "8px"}}><button className="searchButton1" onClick={() => {
+                    
+                    document.getElementById("locationTab").classList.add('horizTranslateOut');
+                    document.getElementById("side").classList.add('horizTranslateInto');
+                    setTimeout(() => {
+                      remove(false, "locationTab");
+                      remove(true, "side");}, 1500); 
+                    }
+                    
+                  }><img src={back} alt="Minimize settings screen"/></button></div>
+                  <br/>
+                  <p id ="locationName"></p>
+                  <p>There will be a picture here at some point</p>
+                  <p id ="locationFloors"></p>
+                  <p id ="locationDescription"></p>
                 </div>
               </React.Fragment>
               )}

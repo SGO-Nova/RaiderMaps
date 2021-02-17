@@ -112,6 +112,30 @@ html, .body{
   width: 300px;
   background-color: #FFFFFF;
   text-align: center;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  clear: right;
+  padding: 10px;
+  text-align: center;
+}
+
+#locationTab{
+  position: fixed;
+  left: -350px;
+  top: 0px;
+  height: 100vh;
+  width: 300px;
+  padding: 10px;
+  background-color: #FFFFFF;
+  text-align: center;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  clear: right;
+  text-align: center;
 }
 
 .horizTranslateInto{
@@ -132,15 +156,6 @@ html, .body{
   left: -350px !important;
 }
 
-#settingsTab{
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  float: right;
-  clear: right;
-  padding: 10px;
-  text-align: center;
-}
 
 .settingsSwitches{
   min-height: 300px;
